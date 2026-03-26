@@ -1,127 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Tuo Nome] - Developer Portfolio</title>
-    <style>
-        /* Stile moderno e professionale (Senza file CSS esterni) */
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
-        body {
-            /* Font di sistema puliti (es. il font di Apple) */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7; /* Grigio chiarissimo stile Apple */
-            color: #1d1d1f;
-            line-height: 1.5;
-            padding: 60px 20px;
-        }
-        .portfolio-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        p.subtitle {
-            font-size: 1.2rem;
-            color: #86868b;
-        }
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border-bottom: 1px solid #d2d2d7;
-            padding-bottom: 12px;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        /* Stile della scheda progetto */
-        .project-card {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .project-tag {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .project-desc {
-            color: #515154;
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-        }
-        .project-link {
-            display: inline-block;
-            background-color: #0071e3; /* Blu tipico dei bottoni Apple */
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .project-link:hover {
-            background-color: #0077ED;
-        }
-    </style>
-</head>
-<body>
+/* --- RESET E VARIABILI --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <div class="portfolio-container">
-        <header>
-            <h1>[Il Tuo Nome e Cognome]</h1>
-            <p class="subtitle">iOS Developer & App Creator</p>
-        </header>
+body {
+    background-color: #050505; /* Nero profondo */
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
 
-        <main>
-            <h2 class="section-title">Featured Projects</h2>
-            
-            <div class="projects-grid">
-                
-                <article class="project-card">
-                    <span class="project-tag">WatchOS Game</span>
-                    <h3 class="project-title">One, Two, Three</h3>
-                    <p class="project-desc">A fast-paced, 8-bit inspired card game designed exclusively for your wrist. Experience retro arcade graphics and quick gameplay directly on your Apple Watch.</p>
-                    
-                    <a href="one-two-three/" class="project-link">View Project Website</a>
-                </article>
+/* --- HERO SECTION (Intestazione) --- */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
 
-                </div>
-        </main>
-    </div>
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    max-width: 800px;
+    color: #a0a0a0;
+}
 
-</body>
-</html>
+.hero h1 strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* --- WORKS SECTION --- */
+.works-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 100px 5%;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+/* Layout a zig-zag dei progetti */
+.project-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 120px;
+}
+
+/* Inverte l'ordine per le righe pari (testo a sinistra, immagine a destra) */
+.project-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Contenitore Immagine (simula le card colorate dell'esempio) */
+.project-image-wrapper {
+    flex: 1;
+    background: #1a1a1a; /* Grigio scuro di base */
+    border-radius: 24px;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 4/3;
+    transition: transform 0.3s ease;
+}
+
+.project-image-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.project-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+/* Colori specifici per i background delle card */
+.bg-green { background: #b4eeb4; } /* Verde pastello */
+.bg-purple { background: #dcd0ff; } /* Viola pastello */
+
+/* Contenitore Testo */
+.project-info {
+    flex: 1;
+    max-width: 500px;
+}
+
+.project-category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a0a0a0;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.project-description {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #a0a0a0;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.project-description strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.project-type {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Bottone a pillola */
+.btn-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    border: 1px solid #444;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-view:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 100px 20px 60px 20px;
+    border-top: 1px solid #111;
+}
+
+footer h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+}
+
+footer h2 strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+footer p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 900px) {
+    .project-row, 
+    .project-row:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 80px;
+    }
+    .hero h1 { font-size: 1.8rem; }
+    .project-description { font-size: 1.4rem; }
+    .project-image-wrapper { padding: 40px; }
+}
