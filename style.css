@@ -1,0 +1,91 @@
+/* Importa il font Press Start 2P da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    /* Sfondo a righe orizzontali scanline 2px */
+    background: repeating-linear-gradient(
+        to bottom,
+        #002838,
+        #002838 2px,
+        #003848 2px,
+        #003848 4px
+    );
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px; /* Dimensioni piccole e compatte */
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenitore centrale per simulare uno schermo stretto (come un Watch o un cabinato) */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(0, 40, 56, 0.8);
+    padding: 30px;
+    border: 4px solid #008C46; /* Verde scuro per il bordo del contenitore */
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    margin-top: 30px;
+    line-height: 1.4;
+}
+
+h1 { 
+    font-size: 16px; 
+    color: #00FF64; /* Accento verde brillante */
+    text-align: center;
+}
+
+h2 { 
+    font-size: 12px; 
+    color: #FFC800; /* Accento giallo/arancio */
+}
+
+p, li {
+    margin-bottom: 15px;
+}
+
+/* Stile per i link di testo normali */
+a {
+    color: #00FF78;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #B4FFD2;
+}
+
+/* --- BOTTONI PIXEL 3D --- */
+.pixel-btn {
+    display: block;
+    text-align: center;
+    background-color: #DA00CE; /* Magenta primario */
+    color: white !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 20px;
+    margin: 30px auto;
+    font-size: 12px;
+    width: fit-content;
+    
+    /* Effetto 3D chunk: chiaro sopra/sinistra, scuro sotto/destra */
+    border-top: 4px solid #FA73FB;
+    border-left: 4px solid #FA73FB;
+    border-bottom: 4px solid #86007E;
+    border-right: 4px solid #86007E;
+    
+    /* Nessun raggio di curvatura per mantenere l'aspetto squadrato */
+    border-radius: 0; 
+}
+
+/* Effetto quando si clicca il bottone (si inverte l'ombra) */
+.pixel-btn:active {
+    border-top: 4px solid #86007E;
+    border-left: 4px solid #86007E;
+    border-bottom: 4px solid #FA73FB;
+    border-right: 4px solid #FA73FB;
+}
