@@ -4,57 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torcy-it | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <nav>
+        <a href="#" class="nav-logo">TORCY-IT</a>
+        <ul class="nav-links">
+            <li><a href="#">Works</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#" class="nav-cta">Get in Touch</a></li>
+        </ul>
+    </nav>
+
     <section class="hero">
-        <h1>Hi i'm Adolfo Torcicollo an independent developer and this are my projects</h1>
+        <div class="hero-tag">Independent Developer</div>
+        <h1>Hi, I'm <span class="accent">Adolfo Torcicollo</span> — and these are my projects</h1>
+        <p class="hero-sub">Building native experiences for iOS, watchOS & beyond.</p>
     </section>
 
-<section class="works-container">
-    <h2 class="section-title">Works</h2>
+    <section class="works-container">
+        <h2 class="section-title">— Works</h2>
 
-    <div class="project-row">
-        <div class="project-image-wrapper">
-            <img src="Group 71.svg" alt="One, Two, Three Game">
+        <div class="project-row">
+            <div class="project-image-wrapper">
+                <img src="Group 71.svg" alt="One, Two, Three Game">
+            </div>
+            <div class="project-info">
+                <span class="project-category">WatchOS Game</span>
+                <p class="project-description">
+                    A fast-paced, 8-bit inspired card game designed exclusively for your wrist. Experience <strong>retro arcade graphics</strong> and <strong>quick gameplay</strong> directly on your Apple Watch.
+                </p>
+                <div class="project-type">WatchOS App</div>
+                <a href="one-two-three/" class="btn-view">VIEW WORK ➔</a>
+            </div>
         </div>
-        
-        <div class="project-info">
-            <span class="project-category">WatchOS Game</span>
-            <p class="project-description">
-                A fast-paced, 8-bit inspired card game designed exclusively for your wrist. Experience <strong>retro arcade graphics</strong> and <strong>quick gameplay</strong> directly on your Apple Watch.
-            </p>
-            <div class="project-type">WatchOS App</div>
-            <a href="one-two-three/" class="btn-view">VIEW WORK ➔</a>
-        </div>
-    </div>
 
-    <div class="project-row">
-        <div class="project-image-wrapper">
-            <img src="mockupicona.svg" alt="TorciMail">
+        <div class="project-row">
+            <div class="project-image-wrapper">
+                <img src="mockupicona.svg" alt="TorciMail">
+            </div>
+            <div class="project-info">
+                <span class="project-category">Thesis Work</span>
+                <p class="project-description">
+                    A <strong>full-Swift end-to-end ecosystem</strong> for certified communications. It features a <strong>Vapor-based server</strong> as a secure middleware and a native <strong>SwiftUI client</strong> to manage trust services, biometric security, and digital affidavits on the go.
+                </p>
+                <div class="project-type">iOS App</div>
+                <a href="certified-comunications/" class="btn-view">VIEW WORK ➔</a>
+            </div>
         </div>
-        
-        <div class="project-info">
-            <span class="project-category">Thesis Work</span>
-            <p class="project-description">
-                A <strong>full-Swift end-to-end ecosystem</strong> for certified communications. It features a <strong>Vapor-based server</strong> as a secure middleware and a native <strong>SwiftUI client</strong> to manage trust services, biometric security, and digital affidavits on the go.
-            </p>
-            <div class="project-type">iOS App</div>
-            <a href="certified-comunications/" class="btn-view">VIEW WORK ➔</a>
-        </div>
-    </div>
-
-</section>
+    </section>
 
     <footer>
-        <h2>Get <strong>in Touch.</strong></h2>
-        <p>So that we can talk more about your next app.</p>
-        
-        <div style="color: #666; font-size: 0.8rem; letter-spacing: 2px;">
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">MAIL</a> | 
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">APP STORE</a> | 
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">LINKEDIN</a>
+        <div class="footer-inner">
+            <h2>Get <strong>in Touch.</strong></h2>
+            <p>So that we can talk more about your next app.</p>
+            <div class="footer-links">
+                <a href="#">MAIL</a> |
+                <a href="#">APP STORE</a> |
+                <a href="#">LINKEDIN</a>
+            </div>
         </div>
     </footer>
 
