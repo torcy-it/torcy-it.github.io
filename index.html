@@ -1,337 +1,67 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumi — World of Fables | App educativa per bambini</title>
-  <meta name="description" content="Lumi — World of Fables è un'app educativa per bambini dedicata alle fiabe interattive. Ricostruisci le storie una scena alla volta!" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* --- VARIABILI E RESET --- */
-    :root {
-      --primary: #FF6B6B;
-      --primary-hover: #ff5252;
-      --secondary: #4D96FF;
-      --background: #F9F7F1;
-      --text-dark: #2C3E50;
-      --text-light: #6C7A89;
-      --card-bg: #FFFFFF;
-      --radius: 20px;
-      --font-play: 'Fredoka', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--background);
-      color: var(--text-dark);
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* --- TOP BAR (Ridotto il padding verticale da 70px a 50px complessivi) --- */
-    .top-bar {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid rgba(0,0,0,0.05);
-    }
-
-    .top-bar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 55px; /* Barra più compatta e meno invasiva */
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-play);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--secondary);
-    }
-
-    .brand-icon {
-      font-size: 1.6rem;
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 6px;
-      background: #EAE6DF;
-      padding: 3px;
-      border-radius: 30px;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lang-btn.active {
-      background: var(--card-bg);
-      color: var(--text-dark);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    /* --- HERO AREA (Aumentato il padding interno per dare aria al contenuto) --- */
-    .hero-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 60px 0; /* Più spazio sopra e sotto il blocco centrale */
-    }
-
-    .page-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 60px; /* Più distacco orizzontale tra testo e card dello screenshot */
-      align-items: center;
-    }
-
-    @media (min-width: 992px) {
-      .page-grid {
-        grid-template-columns: 1.1fr 0.9fr;
-      }
-    }
-
-    /* Contenuto Testuale (Sistemati i margini interni per non farlo sembrare appiccicato) */
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: rgba(255, 107, 107, 0.1);
-      color: var(--primary);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 24px; /* Più spazio sotto il tag giallo */
-      font-family: var(--font-play);
-    }
-
-    h1 {
-      font-family: var(--font-play);
-      font-size: 2.8rem;
-      line-height: 1.15;
-      color: var(--text-dark);
-      margin-bottom: 24px; /* Più spazio sotto il titolo */
-    }
-
-    @media (min-width: 768px) {
-      h1 { font-size: 3.8rem; }
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      margin-bottom: 40px; /* Più spazio prima del pulsante d'azione */
-      max-width: 540px;
-    }
-
-    /* Pulsanti e Navigazione */
-    .cta-container {
-      margin-bottom: 32px; /* Distanza tra il pulsante grande e i pulsanti piccoli */
-    }
-
-    .game-btn {
-      display: inline-block;
-      text-decoration: none;
-      font-family: var(--font-play);
-      font-weight: 700;
-      border-radius: var(--radius);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      text-align: center;
-    }
-
-    .game-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .game-btn.primary {
-      background: var(--primary);
-      color: white;
-      padding: 16px 40px;
-      font-size: 1.25rem;
-      box-shadow: 0 6px 0 #D63031;
-      border: 2px solid #2C3E50;
-    }
-
-    .game-btn.primary:active {
-      transform: translateY(4px);
-      box-shadow: 0 2px 0 #D63031;
-    }
-
-    .small-buttons-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .game-btn.secondary {
-      background: var(--card-bg);
-      color: var(--text-dark);
-      padding: 10px 18px;
-      font-size: 0.9rem;
-      border: 2px solid #EAE6DF;
-    }
-
-    /* --- MOCKUP SCREENSHOT --- */
-    .placeholder-card {
-      display: flex;
-      justify-content: center;
-    }
-
-    .placeholder {
-      background: #E0F2FE;
-      border: 6px solid var(--card-bg);
-      border-radius: 32px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-      width: 100%;
-      max-width: 420px; /* Leggermente più largo per bilanciare la sezione orizzontale */
-      aspect-ratio: 16 / 10; /* Formato più simile a un iPad orizzontale */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .placeholder-inner {
-      padding: 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .phone-icon {
-      font-size: 3rem;
-    }
-
-    .placeholder-inner strong {
-      font-family: var(--font-play);
-      font-size: 1.1rem;
-      color: #0369A1;
-    }
-
-    .placeholder-inner span {
-      font-size: 0.85rem;
-      color: #0284C7;
-    }
-
-    /* --- FOOTER (Ridotto drasticamente il padding da 40px a 20px) --- */
-    .bottom-bar {
-      background: var(--card-bg);
-      padding: 20px 0; /* Molto più sottile */
-      border-top: 1px solid rgba(0,0,0,0.05);
-      font-size: 0.85rem;
-      color: var(--text-light);
-      text-align: center;
-    }
-
-    .bottom-bar-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torcy-it | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="top-bar">
-    <div class="container top-bar-inner">
-      <div class="brand">
-        <span class="brand-icon" aria-hidden="true">📘</span>
-        <span>Lumi</span>
-      </div>
+    <nav>
+        <a href="#" class="nav-logo">TORCY-IT</a>
+    </nav>
 
-      <div class="lang-switch" aria-label="Selettore lingua">
-        <button class="lang-btn active" aria-label="Lingua Italiana">IT</button>
-        <button class="lang-btn" aria-label="English Language">EN</button>
-      </div>
-    </div>
-  </header>
+    <section class="hero">
+        <div class="hero-tag">Independent Developer</div>
+        <h1>Hi, I'm <span class="accent">Adolfo Torcicollo</span></h1>
+        <p class="hero-sub">Building native experiences for iOS, watchOS & beyond.</p>
+    </section>
 
-  <main class="hero-wrap">
-    <div class="container page-grid">
-      
-      <section class="content" aria-label="Presentazione Lumi">
-        <span class="eyebrow">✨ App educativa per bambini</span>
+    <section class="works-container">
+        <h2 class="section-title">— Projects</h2>
 
-        <h1>Lumi: World Of Fables</h1>
-
-        <p class="subtitle">
-          Un'avventura interattiva per ricostruire le fiabe, una scena alla volta.
-        </p>
-
-        <div class="cta-container">
-          <a class="game-btn primary" href="https://apps.apple.com/app/id6773034104" target="_blank" rel="noopener noreferrer">
-            Inizia avventura! →
-          </a>
+        <div class="project-row">
+            <div class="project-image-wrapper">
+                <img src="icon123.svg" alt="One, Two, Three Game">
+            </div>
+            <div class="project-info">
+                <span class="project-category">WatchOS Game</span>
+                <p class="project-description">
+                    A fast-paced, 8-bit inspired card game designed exclusively for your wrist. Experience <strong>retro arcade graphics</strong> and <strong>quick gameplay</strong> directly on your Apple Watch.
+                </p>
+                <div class="project-type">WatchOS App</div>
+                <a href="one-two-three/" class="btn-view">VIEW PROJECT ➔</a>
+            </div>
         </div>
 
-        <nav aria-label="Link di approfondimento">
-          <ul class="small-buttons-list">
-            <li><a class="game-btn secondary" href="#regole">Regole di gioco</a></li>
-            <li><a class="game-btn secondary" href="#privacy-policy">Privacy e Policy</a></li>
-            <li><a class="game-btn secondary" href="#chi-siamo">Chi siamo</a></li>
-          </ul>
-        </nav>
-      </section>
-
-      <section class="placeholder-card" aria-label="Anteprima dell'applicazione">
-        <div class="placeholder">
-          <div class="placeholder-inner">
-            <div class="phone-icon" aria-hidden="true">📱</div>
-            <strong>Inserisci qui lo screenshot dell'app</strong>
-            <span>Formato consigliato: PNG/JPG, verticale o iPad</span>
-          </div>
+        <div class="project-row">
+            <div class="project-image-wrapper">
+                <img src="mockupthesis.svg" alt="TorciMail">
+            </div>
+            <div class="project-info">
+                <span class="project-category">Thesis Work</span>
+                <p class="project-description">
+                    A <strong>full-Swift end-to-end ecosystem</strong> for certified communications. It features a <strong>Vapor-based server</strong> as a secure middleware and a native <strong>SwiftUI client</strong> to manage trust services, biometric security, and digital affidavits on the go.
+                </p>
+                <div class="project-type">iOS App</div>
+                <a href="certified-comunications/" class="btn-view">VIEW PROJECT ➔</a>
+            </div>
         </div>
-      </section>
+    </section>
 
-    </div>
-  </main>
-
-  <footer class="bottom-bar">
-    <div class="container bottom-bar-inner">
-      <p><strong>© 2026 Lumi: World Of Fables</strong></p>
-      <p>iOS, ottimizzata per iPad. Verificare compatibilità iPhone se necessario.</p>
-      <p>OpenDyslexic font by Abelardo Gonzalez, SIL Open Font License.</p>
-    </div>
-  </footer>
+    <footer>
+        <div class="footer-inner">
+            <h2>Get <strong>in Touch.</strong></h2>
+            <p>So that we can talk more about your next app.</p>
+            <div class="footer-links">
+                <a href="mailto:Torci.ado@icloud.com">MAIL</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
