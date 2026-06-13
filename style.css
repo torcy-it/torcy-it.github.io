@@ -205,13 +205,6 @@ nav {
     z-index: 1;
 }
 
-.project-row:nth-child(2) .project-image-wrapper {
-    background: var(--coral);
-}
-
-.project-row:nth-child(3) .project-image-wrapper {
-    background: #1a0066;
-}
 
 .project-info {
     flex: 1;
