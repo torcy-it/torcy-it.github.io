@@ -162,22 +162,11 @@ nav {
     margin-bottom: 60px;
 }
 
-.project-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    margin-bottom: 120px;
-}
-
-.project-row:nth-child(even) {
-    flex-direction: row-reverse;
-}
 
 .project-image-wrapper {
     flex: 1;
     border-radius: 24px;
-    padding: 60px;
+    /* padding: 60px; <-- ELIMINATO per non rimpicciolire troppo l'immagine */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,6 +174,7 @@ nav {
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
+    /* background: ... ELIMINATO */
 }
 
 .project-image-wrapper::before {
