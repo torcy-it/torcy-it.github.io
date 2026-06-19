@@ -6,12 +6,12 @@
 }
 
 :root {
-    --coral: #E2806E;
+    --coral: #E8A23E;
     --violet: #3D4D94;
     --violet-mid: #5165B0;
     --teal: #5FC2AE;
     --white: #FFFFFF;
-    --coral-dark: #B85F4F;
+    --coral-dark: #B97A2A;
     --violet-light: #9AADF6;
 }
 
@@ -74,7 +74,7 @@ nav {
     letter-spacing: 1px !important;
 }
 
-.nav-cta:hover { background: #ec9886; color: var(--white) !important; }
+.nav-cta:hover { background: #f0b563; color: var(--white) !important; }
 
 /* --- HERO SECTION --- */
 .hero {
