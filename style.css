@@ -6,13 +6,13 @@
 }
 
 :root {
-    --coral: #FF4D5A;
-    --violet: #5500FF;
-    --violet-mid: #6B10FF;
-    --teal: #00E5D4;
+    --coral: #E2806E;
+    --violet: #3D4D94;
+    --violet-mid: #5165B0;
+    --teal: #5FC2AE;
     --white: #FFFFFF;
-    --coral-dark: #C93040;
-    --violet-light: #8B40FF;
+    --coral-dark: #B85F4F;
+    --violet-light: #9AADF6;
 }
 
 body {
@@ -34,7 +34,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background: rgba(85, 0, 255, 0.85);
+    background: rgba(61, 77, 148, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -74,7 +74,7 @@ nav {
     letter-spacing: 1px !important;
 }
 
-.nav-cta:hover { background: #ff6570; color: var(--white) !important; }
+.nav-cta:hover { background: #ec9886; color: var(--white) !important; }
 
 /* --- HERO SECTION --- */
 .hero {
