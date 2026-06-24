@@ -178,20 +178,57 @@ nav {
     color: rgba(255, 255, 255, 0.45);
     z-index: 3;
     transition: opacity 0.4s ease;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 18px;
 }
 
 .hero--game-active .hero-hint {
     opacity: 0;
+    pointer-events: none;
+}
+
+.hero-game__exit {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, background 0.2s ease, transform 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.hero-game__exit:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.hero--game-active .hero-game__exit {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .hero-hint__boss-icon {
     display: inline-block;
-    width: 36px;
-    height: 36px;
+    width: 2.8em;
+    height: 2.8em;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

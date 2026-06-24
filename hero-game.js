@@ -389,7 +389,7 @@
     heroContent.innerHTML = `
       <h1 class="game-status-title" style="color: #00f0ff; text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);">VICTORY!</h1>
       <div class="hero-bio">
-        <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">You saved the galaxy! Click to restart</p>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">You saved the website! Click to restart</p>
       </div>
     `;
     heroContent.style.opacity = '1';
@@ -410,7 +410,16 @@
       if (bossState !== 'hidden') {
         if (bossState !== 'lose' && bossState !== 'victory') {
           const bossRect = boss.getBoundingClientRect();
-          if (rectsOverlap(bulletRect, bossRect)) {
+          // Shrink the boss hitbox to 50% of its size (25% padding on each side)
+          const shrinkX = bossRect.width * 0.25;
+          const shrinkY = bossRect.height * 0.25;
+          const bossHitbox = {
+            left: bossRect.left + shrinkX,
+            right: bossRect.right - shrinkX,
+            top: bossRect.top + shrinkY,
+            bottom: bossRect.bottom - shrinkY
+          };
+          if (rectsOverlap(bulletRect, bossHitbox)) {
             damageBoss();
             bullet.el.remove();
             return false;
@@ -522,10 +531,45 @@
     heroContent.innerHTML = originalContentHTML;
   }
 
+  function checkIsMobile() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  // Update hint text dynamically
+  const heroHint = document.getElementById("hero-hint");
+  if (heroHint) {
+    const hintTextEl = heroHint.querySelector(".hero-hint__text");
+    if (hintTextEl) {
+      if (checkIsMobile()) {
+        hintTextEl.textContent = "Hold to defend the website";
+      } else {
+        hintTextEl.textContent = "Click to defend the website";
+      }
+    }
+  }
+
+  // Handle exit button
+  const exitBtn = document.getElementById("hero-game-exit");
+  if (exitBtn) {
+    const handleExit = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      deactivateGame();
+    };
+    exitBtn.addEventListener("click", handleExit);
+    exitBtn.addEventListener("touchstart", handleExit, { passive: false });
+  }
+
   hero.addEventListener("click", (e) => {
     if (!active) {
+      if (checkIsMobile() && !e.target.closest("#hero-hint")) {
+        return;
+      }
       activateGame(e.clientX, e.clientY);
     } else {
+      if (checkIsMobile()) {
+        return; // Mobile uses the exit button to deactivate
+      }
       deactivateGame();
     }
   });
@@ -546,13 +590,21 @@
       if (!touch) return;
 
       if (!active) {
+        if (!e.target.closest("#hero-hint")) {
+          return;
+        }
         e.preventDefault();
         activateGame(touch.clientX, touch.clientY);
         return;
       }
 
+      // If active, just update position instead of deactivating
       e.preventDefault();
-      deactivateGame();
+      const rect = getHeroRect();
+      mousePos = {
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top,
+      };
     },
     { passive: false }
   );
@@ -561,12 +613,13 @@
     if (!active) return;
     const touch = e.touches[0];
     if (!touch) return;
+    e.preventDefault();
     const rect = getHeroRect();
     mousePos = {
       x: touch.clientX - rect.left,
       y: touch.clientY - rect.top,
     };
-  });
+  }, { passive: false });
 
   hero.addEventListener("mouseleave", () => {
     if (!active) return;
