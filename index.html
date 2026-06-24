@@ -15,10 +15,30 @@
         <a href="#" class="nav-logo">TORCY-IT</a>
     </nav>
 
-    <section class="hero">
-        <div class="hero-tag">Independent Developer</div>
-        <h1>Hi, I'm <span class="accent">Adolfo Torcicollo</span></h1>
-        <p class="hero-sub">Building native experiences for iOS, watchOS & beyond.</p>
+    <section class="hero" id="hero">
+        <div class="hero-game" id="hero-game" aria-hidden="true">
+            <div class="hero-game__boss" id="hero-boss" style="display: none;">
+                <div class="hero-game__boss-health-dots">
+                    <span class="boss-dot"></span>
+                    <span class="boss-dot"></span>
+                    <span class="boss-dot"></span>
+                </div>
+            </div>
+            <div class="hero-game__ship" id="hero-ship"></div>
+        </div>
+
+        <div class="hero-content" id="hero-content">
+            <h1>Hi, I'm <span class="accent">Adolfo Torcicollo</span></h1>
+            <div class="hero-bio">
+                <p>Mobile developer with a background in Computer Science (Federico II) and product design (Apple Developer Academy, Naples). I build iOS apps and games where architecture and aesthetics aren't a trade-off , clean code that ships, interfaces people actually enjoy using.</p>
+            </div>
+        </div>
+
+        <p class="hero-hint" id="hero-hint">
+            <span class="hero-hint__boss-icon"></span>
+            Click to defend the galaxy
+            <span class="hero-hint__boss-icon"></span>
+        </p>
     </section>
 
     <section class="works-container">
@@ -31,11 +51,11 @@
                     <img src="icon123.png" alt="One, Two, Three Game">
                 </div>
                 <div class="project-info">
-                    <span class="project-category">WatchOS Game</span>
+                    <span class="project-category">iOS Game</span>
                     <p class="project-description">
-                        A fast-paced, 8-bit inspired card game designed exclusively for your wrist. Experience <strong>retro arcade graphics</strong> and <strong>quick gameplay</strong> directly on your Apple Watch.
+                        A <strong>2D iOS game</strong> built with <strong>SpriteKit</strong> and <strong>GameplayKit</strong> — physics-based gameplay, animated scenes, and state-driven logic. Level variants were generated and balanced with <strong>Gemini</strong>.
                     </p>
-                    <div class="project-type">WatchOS App</div>
+                    <div class="project-type">iOS App</div>
                     <a href="one-two-three/" class="btn-view">VIEW PROJECT ➔</a>
                 </div>
             </div>
@@ -61,7 +81,7 @@
                 <div class="project-info">
                     <span class="project-category">iPadOS Game</span>
                     <p class="project-description">
-                        An immersive, beautifully illustrated fable companion designed for the big screen. Experience <strong>interactive storytelling</strong> and <strong>magical world-building</strong> directly on your iPad.
+                        An <strong>iPad game</strong> for children — explore fairy tales, put the story scenes in the right order, and unlock your own interactive storybook as you play.
                     </p>
                     <div class="project-type">iPadOS App</div>
                     <a href="lumi/" class="btn-view">VIEW PROJECT ➔</a>
@@ -95,5 +115,6 @@
         </div>
     </footer>
 
+    <script src="hero-game.js"></script>
 </body>
 </html>
